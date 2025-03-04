@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercicios condicionais</title>
+  </head>
+  <body>
+
+    <h1>EXERCICIO 12</h1>
+
+    <p>
+      Faça um script que leia 2 números e em seguida pergunte ao usuário qual <br>
+      operação ele deseja realizar. O resultado da operação deve ser acompanhado <br>
+      de uma frase que diga se o número é: par ou ímpar; positivo ou negativo; inteiro ou decimal.
+    </p>
+
+    <script>
+      const num1 = Number(prompt("Digite o primeiro número: "));
+      const num2 = Number(prompt("Digite o segundo número: "));
+
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Entre apenas com números");
+      } else {
+        let operacao = prompt("Qual operação deseja realizar?  (+, -, *, /)");
+        let resultado;
+
+        if (operacao === "/" && num2 === 0) {
+          alert("Não pode dividir por zero");
+        } else {
+          switch (operacao) {
+            case "+":
+              resultado = num1 + num2;
+              break;
+            case "-":
+              resultado = num1 - num2;
+              break;
+            case "*":
+              resultado = num1 * num2;
+              break;
+            case "/":
+              resultado = num1 / num2;
+              break;
+            default:
+              alert("Entre com o comando correto");
+          }
+
+          if (resultado !== undefined) {
+            const parOuImpar = resultado % 2 === 0 ? "Par" : "Ímpar";
+            const inteiroOuDecimal = Number.isInteger(resultado) ? "Inteiro" : "Decimal"; 
+            const positivoOuNegativo = resultado > 0 ? "Positivo" : resultado < 0 ? "Negativo" : "Neutro"
+
+            alert(
+             
+                `Resultado: (${num1}) ${operacao} (${num2}) = ${resultado}\n` +
+                `(Par ou ímpar?) ${parOuImpar}\n` +
+                `(Positivo ou negativo?) ${positivoOuNegativo}\n` +
+                `(Inteiro ou decimal?) ${inteiroOuDecimal}`
+            );
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
