@@ -19,12 +19,16 @@
       const num1 = Number(prompt("Digite o primeiro número: "));
       const num2 = Number(prompt("Digite o segundo número: "));
 
+      //validação para a entrada apenas de números
       if (isNaN(num1) || isNaN(num2)) {
         alert("Entre apenas com números");
       } else {
         let operacao = prompt("Qual operação deseja realizar?  (+, -, *, /)");
         let resultado;
 
+        /*validação para que caso o segundo número for zero, e a operação
+        escolhida for '/', não será possível, pois não se divide algo por zero
+        */
         if (operacao === "/" && num2 === 0) {
           alert("Não pode dividir por zero");
         } else {
@@ -44,7 +48,9 @@
             default:
               alert("Entre com o comando correto");
           }
-
+          /*validação para que caso pule etapas no prompt, e o resultado fique como Undefined,
+          não será imprimido os resultados
+          */
           if (resultado !== undefined) {
             const parOuImpar = resultado % 2 === 0 ? "Par" : "Ímpar";
             const inteiroOuDecimal = Number.isInteger(resultado) ? "Inteiro" : "Decimal"; 
